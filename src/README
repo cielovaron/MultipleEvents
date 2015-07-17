@@ -1,0 +1,33 @@
+Multi21
+
+有音区間に突発的に別の音を追加するもの
+wav および rawファイルを入力として利用
+
+使用例
+multi21
+	-b [BASEFILE]
+	-a [ANNOTATION1]
+	-e [EVENTFILE]
+	-l [ANNOTATION2]
+	-r [SNR]
+	-o [OUTPUTAUDIOFILE]
+	-O [OUTPUTANNOTATION]
+
+引数の説明
+-b	基となる音のファイル
+-a	基となる音のファイルのアノテーションデータ
+-e	重畳する音のファイル
+-l	重畳する音のファイルのアノテーションデータ
+-r 	重畳させるSNR
+-A	SNRに関係なく振幅と値を決める場合
+-o	出力する音のファイル[WAVEFORMAT with samplingrate = 44.1kHz(default)]
+-O	出力する音のアノテーションデータ[Not HTK style]
+	ex) "onset offset label"
+-h/?	This README will be opened
+
+注意
+	サンプリングレートの修正はSOX等を利用して各自で行う必要がある
+
+名前の由来
+	作成時に飲んでいた飲み物がRedbullで2013年F1 GP マレーシアグランプリにおけるMulti21事件
+
