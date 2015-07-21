@@ -3,7 +3,7 @@ CFLAGS   = -Wextra -g -MMD -MP -O3
 LDFLAGS  =
 LIBS     =
 INCLUDE  = -I../inc
-TARGET   = multi21
+TARGET   = test/multi21
 OBJDIR   = ./obj
 ifeq "$(strip $(OBJDIR))" ""
   OBJDIR = .

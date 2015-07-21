@@ -22,6 +22,9 @@ extern char annot[STRLEN];
 extern double amp;
 extern int amp_flag;
 
+extern  float out_ltime[500][2];
+extern  char out_label[500][100];
+
 
 //以下wave format
 extern char reafword[4];

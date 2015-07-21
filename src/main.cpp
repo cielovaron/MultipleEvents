@@ -19,6 +19,7 @@ char annot[STRLEN];
 int snr;
 int amp_flag;
 double amp;
+
 void useage(void){
   std::ifstream ifs("./README");
   std::string str;
@@ -67,7 +68,7 @@ int main(int  argc, char *argv[]){
     }
     case 'a':{
       strcpy(annotation,optarg);
-      std::cout << "Annotation file\t:" << annotation << std::endl;
+      std::cout << "Annotation file\t: " << annotation << std::endl;
       break;
     }
     case 'b':{
@@ -97,13 +98,13 @@ int main(int  argc, char *argv[]){
     }
     case 'l':{
       strcpy(elabel,optarg);
-      std::cout <<  "label file\t:" << elabel << std::endl;
+      std::cout <<  "label file\t: " << elabel << std::endl;
       break;
     }
     case 'r':{
       strcpy(input,optarg);
       snr = atoi(input);
-      std::cout << "SNR\t: " << snr << "[dB]"<<std::endl;
+      std::cout << "SNR\t\t: " << snr << "[dB]"<<std::endl;
       break;
     }
     case 'o':{
@@ -113,7 +114,7 @@ int main(int  argc, char *argv[]){
     }
     case 'O':{
       strcpy(annot,optarg);
-      std::cout << "Export file\t: " << annot << std::endl;
+      std::cout << "Export label\t: " << annot << std::endl;
       break;
     }
     case '?':{
@@ -125,9 +126,9 @@ int main(int  argc, char *argv[]){
     }
     }
   }
-  //mix.control(annotation);
+  mix.control(annotation);
   //std::cout << "File Length\t: " << c_length << std::endl;
-  //wave.EXPORT(saveid,out,c_length);
+  wave.EXPORT(saveid,out,c_length);
   mem.clear();
   return 0;
 }
