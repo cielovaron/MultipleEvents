@@ -82,7 +82,7 @@ void MIX::cut_reagion(int pos){
   for(i=0;i<end - start;i++){
     event_e += event[i+start] * event[i+start];
   }
-  a_event_e = event_e /(end - start) ;
+  a_event_e = event_e / (end - start) ;
 }
 
 void MIX::marge(){
@@ -118,11 +118,11 @@ void MIX::marge(){
       for(j=(long)((float)samplingrate * c_ltime[i][0]); j < (long)((float)samplingrate * c_ltime[i][1]); j++){
         clean_e += (double)(clean[j]*clean[j]);
       }
-
+      clean_e = clean_e /  (long)((float)samplingrate * (c_ltime[i][1] - c_ltime[i][0]));
       if(amp_flag == 0){
       	amp = sqrt(clean_e / (pow(10, snr / 10 ) * a_event_e));
       }
-      std::cout << clean_e << "\t" << a_event_e << std::endl;
+      std::cout << clean_e << "\t" << a_event_e << "\t" << amp  << "\n"  << std::endl;
 
       out_ltime[n][0] = c_ltime[i][0];
       out_ltime[n][1] = c_ltime[i][0] + (float)((float)(end - start) / (float)samplingrate);
@@ -192,12 +192,12 @@ void MIX::LABEL(char *filename, int n){
   int i;
   //処理開始
   out = fopen(filename, "w"); 
-  std::cout << n << std::endl;
+  //std::cout << n << std::endl;
   
   
   for(i = 0; i < n; i++){
     fprintf(out, "%f %f %s\n",out_ltime[i][0], out_ltime[i][1],out_label[i]);
-    std::cout << out_ltime[i][0] << "\t" <<  out_ltime[i][1] << "\t" << out_label[i]  << std::endl;
+    //std::cout << out_ltime[i][0] << "\t" <<  out_ltime[i][1] << "\t" << out_label[i]  << std::endl;
   }
   fclose(out);
 }
