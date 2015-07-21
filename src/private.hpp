@@ -17,10 +17,11 @@ extern long e_length;
 extern double event_e;
 //extern double noise_e;;
 extern char saveid[STRLEN];
-extern char bglabel[STRLEN];
+extern char elabel[STRLEN];
+extern char annot[STRLEN];
 extern double amp;
 extern int amp_flag;
-extern char elabel[STRLEN];
+
 
 //以下wave format
 extern char reafword[4];

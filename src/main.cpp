@@ -13,10 +13,11 @@
 #include"private.hpp"
 
 char saveid[STRLEN];
-char bglabel[STRLEN];
 char elabel[STRLEN];
+char annot[STRLEN];
 
 int snr;
+int amp_flag;
 double amp;
 void useage(void){
   std::ifstream ifs("./README");
@@ -47,7 +48,8 @@ int main(int  argc, char *argv[]){
   char *check;
   char outputsound[STRLEN];
   strcpy(saveid,"unknown.wav");
-  strcpy(bglabel,"NULL");
+  strcpy(annot,"unknown.txt");
+  amp_flag = 0;
   WAVE wave;
   MIX mix;
 
@@ -60,6 +62,7 @@ int main(int  argc, char *argv[]){
     case 'A':{
       strcpy(input,optarg);
       amp = atof(input);
+      amp_flag++;
       break;
     }
     case 'a':{
@@ -108,7 +111,11 @@ int main(int  argc, char *argv[]){
       std::cout << "Export file\t: " << saveid << std::endl;
       break;
     }
-
+    case 'O':{
+      strcpy(annot,optarg);
+      std::cout << "Export file\t: " << annot << std::endl;
+      break;
+    }
     case '?':{
       useage();
       break;
@@ -118,9 +125,9 @@ int main(int  argc, char *argv[]){
     }
     }
   }
-  mix.control(annotation);
+  //mix.control(annotation);
   //std::cout << "File Length\t: " << c_length << std::endl;
-  wave.EXPORT(saveid,out,c_length);
+  //wave.EXPORT(saveid,out,c_length);
   mem.clear();
   return 0;
 }
